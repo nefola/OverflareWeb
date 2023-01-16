@@ -1,3 +1,5 @@
+// abandoned file, see pageData.js
+
 //idk if this use of page number will be the one we care about of if its gonna be the document name
 var pageNum = "test0";
 
