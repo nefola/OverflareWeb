@@ -1,4 +1,8 @@
-var pageList = [
+
+var pageOrder = ["p1", "p2", "p3"];
+
+
+/* var pageList = [
     {
         "title": "Example",
         "pgNum": 0,
@@ -18,8 +22,7 @@ var pageList = [
         "prevPage": 0,
         "content": `<img src=testImages/img2.png> `,
     },
-]
-
+] */
 /* export function myImageList() {
     return pageList;
 }

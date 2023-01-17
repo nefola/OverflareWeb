@@ -11,13 +11,46 @@ function findGetParameter(parameterName) { //function used to write a parameter 
     }
     return result;
 }
-// this code handles page numbers
-let currentPage = Number(findGetParameter("pg"));
+// this code handles page numbers, checks if it is a string or a number
+let pageNum = Number(findGetParameter("pg")) ? String(findGetParameter("pg")):
 
-nextPage = currentPage + 1;
-prevPage = currentPage - 1;
+// variable used when directly checking the pageList array
+currentPage = pageList[pageList.findIndex(pageNum)];
+
+// sets next and previous page "numbers"
+//increments and decrements numereicly when page number is a number
+// refereces custom next and prev pages when availible 
+
+// if the element with pageNum is null for prev/next page, increment/decrement, otherwise
+if (pageList[currentPage].prevPage = ""){
+    //prevPage = (pageList[currentPage].pgNum - 1);
+    prevPage = pageNum - 1;
+} else {
+    prevPage = pageList[currentPage].prevPage;
+}
+
+if (pageList[currentPage].nextPage = "") {
+    //nextPage = (pageList[currentPage].pgNum + 1);
+    nextPage = pageNum + 1;
+} else {
+    nextPage = pageList[currentPage].nextPage;
+}
 
 // this function determins what the page selection text is linked to
+/*function setPageLinks(nPage, pPage) {
+    let nextPage = document.querySelector(".nextpage")
+    let prevPage = document.querySelector(".prevpage")
+
+    nextPage.href = "?pg=" + (nPage)
+    prevPage.href = "?pg=" + (pPage)
+
+    if (pPage <= 0) { prevPage.style.display = "none" }
+    else { prevPage.style.display = "unset" }
+
+    if (nPage = null) { nextPage.style.display = "none" }
+    else { nextPage.style.display = "unset" }
+} */
+
 function setPageLinks(pg) {
     let nextPage = document.querySelector(".nextpage")
     let prevPage = document.querySelector(".prevpage")
@@ -34,7 +67,7 @@ function setPageLinks(pg) {
 
 // this code puts those links in
 
-setPageLinks(currentPage);
+setPageLinks(nextPage, prevPage);
 document.querySelector(".nextpage").addEventListener("click", goToPage)
 document.querySelector(".prevpage").addEventListener("click", goToPage)
 
@@ -44,7 +77,7 @@ function goToPage(event) {
     history.pushState(null, '', this.href);
 
     let linkedPage = parseInt(this.href.split("=")[1])
-    currentPage = linkedPage
+    pageNum = linkedPage
 
     // Set new links for page arrows
     setPageLinks(linkedPage)
@@ -56,7 +89,11 @@ function goToPage(event) {
     document.body.className = pageList[currentPage].theme
     // Scroll Up 
     window.scrollTo(0, 0);
+    //logs the current page under my new page rules
+    console.log(currentPageTest);
 }
+
+
 
 
 // this code grabs page media and text for display

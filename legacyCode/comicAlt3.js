@@ -18,23 +18,23 @@ nextPage = currentPage + 1;
 prevPage = currentPage - 1;
 
 // this function determins what the page selection text is linked to
-function setPageLinks(pg) {
+function setPageLinks(prevPage, nextPage) {
     let nextPage = document.querySelector(".nextpage")
     let prevPage = document.querySelector(".prevpage")
 
-    nextPage.href = "?pg=" + (pg + 1)
-    prevPage.href = "?pg=" + (pg - 1)
+    nextPage.href = "?pg=" + nextPage
+    prevPage.href = "?pg=" + prevPage
 
-    if (pg - 1 < 0) { prevPage.style.display = "none" }
+    if (prevPage < 0) { prevPage.style.display = "none" }
     else { prevPage.style.display = "unset" }
 
-    if (pg + 1 >= pageList.length) { nextPage.style.display = "none" }
+    if (nextPage >= pageList.length) { nextPage.style.display = "none" }
     else { nextPage.style.display = "unset" }
 }
 
 // this code puts those links in
 
-setPageLinks(currentPage);
+setPageLinks(prevPage,nextPage);
 document.querySelector(".nextpage").addEventListener("click", goToPage)
 document.querySelector(".prevpage").addEventListener("click", goToPage)
 
@@ -47,7 +47,7 @@ function goToPage(event) {
     currentPage = linkedPage
 
     // Set new links for page arrows
-    setPageLinks(linkedPage)
+    setPageLinks(prevPage,nextPage)
     //clears the content
     pageContent = "";
     // Set new content
@@ -57,6 +57,8 @@ function goToPage(event) {
     // Scroll Up 
     window.scrollTo(0, 0);
 }
+
+
 
 
 // this code grabs page media and text for display

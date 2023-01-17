@@ -1,0 +1,3 @@
+function chapterDisplay (chapterString, title) {
+
+};

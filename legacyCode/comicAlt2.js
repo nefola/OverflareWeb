@@ -12,29 +12,35 @@ function findGetParameter(parameterName) { //function used to write a parameter 
     return result;
 }
 // this code handles page numbers
-let currentPage = Number(findGetParameter("pg"));
-
+let pageNum = String(findGetParameter("pg"));
+    currentPage = Number(pageNum);
+/*
 nextPage = currentPage + 1;
 prevPage = currentPage - 1;
+*/
+//prevPage = `${pageList[pageList.findIndex(pageNum)].prevPage}`;
+
+// sets up next and prev page in a way that handles both numeric and non numeric page numbers
+
 
 // this function determins what the page selection text is linked to
-function setPageLinks(pg) {
+function setPageLinks(pp, np) {
     let nextPage = document.querySelector(".nextpage")
     let prevPage = document.querySelector(".prevpage")
 
-    nextPage.href = "?pg=" + (pg + 1)
-    prevPage.href = "?pg=" + (pg - 1)
+    nextPage.href = "?pg=" + (np)
+    prevPage.href = "?pg=" + (pp)
 
-    if (pg - 1 < 0) { prevPage.style.display = "none" }
+    if (pp < 0) { prevPage.style.display = "none" }
     else { prevPage.style.display = "unset" }
 
-    if (pg + 1 >= pageList.length) { nextPage.style.display = "none" }
+    if (np >= pageList.length) { nextPage.style.display = "none" }
     else { nextPage.style.display = "unset" }
 }
 
 // this code puts those links in
 
-setPageLinks(currentPage);
+setPageLinks(prevPage, nextPage);
 document.querySelector(".nextpage").addEventListener("click", goToPage)
 document.querySelector(".prevpage").addEventListener("click", goToPage)
 
@@ -46,8 +52,10 @@ function goToPage(event) {
     let linkedPage = parseInt(this.href.split("=")[1])
     currentPage = linkedPage
 
+    
     // Set new links for page arrows
-    setPageLinks(linkedPage)
+    setPageLinks(prevPage, nextPage)
+
     //clears the content
     pageContent = "";
     // Set new content
@@ -57,6 +65,8 @@ function goToPage(event) {
     // Scroll Up 
     window.scrollTo(0, 0);
 }
+
+
 
 
 // this code grabs page media and text for display
