@@ -30,8 +30,8 @@ function setPageLinks (pageOrder, currentPage){
     } else {
         nextPage.style.display = "unset"
     }
-    console.log("get this.this'd");
-    console.log("the current page is:" + currentPage);
+
+    // console.log("the current page is:" + currentPage);
 }
 
 setPageLinks (pageOrder, currentPageId)
@@ -41,9 +41,9 @@ console.log(currentPageId)
 console.log()
 
 // changes what page ur on when you click it (and maybe also when you press the arrow keys)
-document.querySelector(".nextPage").addEventListener("click", goToPage)
+/*document.querySelector(".nextPage").addEventListener("click", goToPage)
 document.querySelector(".nextPage").addEventListener("keyright", goToPage)
 document.querySelector(".prevPage").addEventListener("click", goToPage)
 document.querySelector(".prevPage").addEventListener("keyleft", goToPage)
 document.querySelector(".firstPage").addEventListener("click", goToPage)
-
+*/ //no longer needed, arrow key support coming later

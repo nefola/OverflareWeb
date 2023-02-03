@@ -1,6 +1,7 @@
 
 var pageOrder = ["p1", "p2", "p3"];
-
+var pageDates = ["2023.1.16","2023.1.17","2023.1.18"];
+var pageTitles = ["Page 1","Page 2","Vriska"];
 
 /* var pageList = [
     {
