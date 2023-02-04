@@ -13,12 +13,15 @@ function chapterDisplay(chapterOrder, chapterTitles, chapterDates, title, elemen
 
         //renders each page's date
         chapterIndexContent = chapterIndexContent + "</br><a class=date>" + chapterDates[pageNum] + "</a>";
-        //renders each page's name
-        chapterIndexContent = chapterIndexContent + "<a class=pageNumber>" + chapterTitles[pageNum] + "<a/>"; 
-        
-        // sets the page links, doesnt work currnetly
-        chapterOrder[pageNum].href = pageOrder[pageNum] + ".html";
+        //renders each page's name with link
+        chapterIndexContent = chapterIndexContent + "<a href=" + chapterOrder[pageNum] + ".html>" + chapterTitles[pageNum] + "<a/>"; 
 
+
+        // sets the page links, doesnt work currnetly, need to parse name
+        //chapterOrder[pageNum].href = chapterOrder[pageNum] + ".html";
+        
+       // console.log(chapterOrder[pageNum].href);
+        //console.log(chapterOrder[pageNum]);
         console.log("i am in the for loop");
     }
     
@@ -29,7 +32,7 @@ function chapterDisplay(chapterOrder, chapterTitles, chapterDates, title, elemen
 }
 
 
-chapterDisplay(pageOrder, pageDates, pageTitles, "Chapter 1", "chapter1Index")
+chapterDisplay(pageOrder, pageTitles, pageDates, "Chapter 1", "chapter1Index")
 
 
 //this code will be used to set the html code of each archive element 
